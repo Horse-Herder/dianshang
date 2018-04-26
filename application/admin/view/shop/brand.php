@@ -27,17 +27,16 @@
 <body>
 <div class="margin" id="page_style">
 <div class="operation clearfix">
-<button class="btn button_btn btn-danger" type="button" onclick=""><i class="fa fa-trash-o"></i>&nbsp;删除</button>
+<button class="btn button_btn btn-danger" id="apple" type="button" onclick=""><i class="fa fa-trash-o"></i>&nbsp;删除</button>
 <span class="submenu"><a href="javascript:void(0)" name="{:url('admin/shop/add_brand')}" class="btn button_btn bg-deep-blue" title="添加产品"><i class="fa  fa-edit"></i>&nbsp;添加品牌</a></span>
 <div class="search  clearfix">
  <label class="label_name">品牌搜索：</label><input name="" type="text"  class="form-control col-xs-6"/><button class="btn button_btn bg-deep-blue " onclick=""  type="button"><i class="fa  fa-search"></i>&nbsp;搜索</button>
-
 </div>
 </div>
 <!--列表展示-->
 <div class="list_Exhibition margin-sx">
  <table class="table table_list table_striped table-bordered" id="sample-table">
-  <thead>
+  <thead list="apple">
   <tr>
   <th width="30"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
    <th width="100">产品编号</th>
@@ -52,65 +51,8 @@
    <th width="220"></th>
    </tr>   
   </thead>
-  <tbody>
-   <tr>
-   </tr>
-  </tbody>
- </table>
-</div>
-</div>
-<div class="add_Carousel_figure" id="add_Carousel_figure" style=" display:none">
-  <table class="table table_list table_striped table-bordered">
-   <thead>
-    <tr>
-      <th width="30"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
-     <th  width="50">排序</th>
-     <th width="100">图片</th>
-     <th>尺寸</th>
-     <th>大小</th>
-     <th>上传时间</th>
-     <th>操作</th>
-    </tr>
-   </thead>
-   
-   <tbody>
-    <tr>
-     <td width="30"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-     <td>1</td>
-     <td><img src="../products/ad.jpg"  width="100px" height="80px"/></td>
-     <td>450x470</td>
-     <td>234KB</td>
-     <td>2016-08-21</td>
-     <td>
-      <a href="javascript:ovid()">删除</a>
-      <a href="javascript:ovid()">修改</a>
-     </td>
-    </tr>
-      <tr>
-     <td width="30"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-     <td>2</td>
-     <td><img src="../products/p_55.jpg"  width="100px" height="80px"/></td>
-     <td>450x470</td>
-     <td>234KB</td>
-     <td>2016-08-21</td>
-     <td>
-      <a href="javascript:ovid()">删除</a>
-      <a href="javascript:ovid()">修改</a>
-     </td>
-    </tr>
-   </tbody>
   </table>
 
-  <div class="list_carousel" id="Upload">
-  <div class="title_name"><i></i>添加轮播图</div>
-      <button type="button" class="add_Upload bg-deep-blue" id="add_Upload" onclick="add_Upload()"><i class="fa  fa-plus"></i></button>
-    <div class="images_Upload clearfix margin-bottom" id="images_Upload">
-      <span class="Upload_img"><input name="" type="file" /></span>
-      <a href="javascript:ovid()" class="operating delete_Upload" onclick="delete_Upload(this.id)"><i class="fa fa-remove"></i></a>
-      <a href="javascript:ovid()" class="operating" title="预览" onclick="preview_img(this.id)"><i class="fa  fa-image"></i></a>
-    </div>
-  </div>
-</div>
 <div style="padding-left: 40%" align='centent' >{$data->render()}</div>
 
 </body>
@@ -151,7 +93,7 @@ function addSpot(obj, sm ,sid) {
   if($('.delete_Upload').size() >= sm) {$(obj).hide();layer.msg('当前为最大图片添加量!',{icon:0,time:1000});}}
 var dataSet=[
 {volist name='data' id='v'}
-    ['<label><input type="checkbox" class="ace"><span class="lbl"></span></label>',
+    ['<label><input type="checkbox" name="check[]" value="{$v["brand_id"]}" class="ace"><span class="lbl"></span></label>',
     '{$v["brand_id"]}', 
     '{$v["brand_name"]}',
     '<img src="{$v["brand_logo"]}" alt="" width="50" heigth="50">',
@@ -161,7 +103,7 @@ var dataSet=[
     '{if condition="$v.is_show eq 0"}否{else /}是{/if}',
     '{$v["add_time"]}',
     '<span class="label label-success label-sm">上架</span>',
-    '<a href="javascript:ovid()" onclick="picture_stop(this,"10001")" class="btn bg-green operation_btn">下架</a> <a href="{:url('admin/shop/brand_update',['brand_id'=>$v.brand_id])}" onclick="picture_edit(this,"123")" class="btn bg-deep-blue operation_btn">修改</a> <a href="{:url('admin/shop/brand_del',['brand_id'=>$v.brand_id])}" onclick="picture_del(this,'+10001+')" class="btn btn-danger operation_btn">删除</a>'],
+    '<a href="javascript:ovid()" onclick="picture_stop(this,"10001")" class="btn bg-green operation_btn">下架</a> <a href="{:url('admin/shop/update_brand',['brand_id'=>$v.brand_id])}" onclick="picture_edit(this,"123")" class="btn bg-deep-blue operation_btn">修改</a> <a href="{:url('admin/shop/brand_del',['brand_id'=>$v.brand_id])}" onclick="picture_del(this,'+10001+')" class="btn btn-danger operation_btn">删除</a>'],
     {/volist}];        
       jQuery(function($) {
         var oTable1 = $('#sample-table').dataTable( {
@@ -240,4 +182,27 @@ $("#page_style").niceScroll({
    $("#sample-table").css({"width":width-20+"px"});
     $('#sample-table').location.replace(location.href);
    });
+
+$('#apple').click(function(){
+  var id_array="";
+   $("input[name='check[]']:checked").each(function(){
+      id_array+=','+$(this).attr('value');
+   })
+   $.ajax({
+     type: "POST",
+     url: "{:url('admin/shop/brand_del')}",
+     data: {'brand_id':id_array},
+     dataType: "json",
+     success: function(msg){
+       if(msg.status==1){
+        alert('删除成功');
+        $("input[name='check[]']:checked").parents("tr").remove() 
+        window.location.reload()
+       }else{
+        alert('删除失败');
+       }
+     }
+  });
+});
+
 </script>

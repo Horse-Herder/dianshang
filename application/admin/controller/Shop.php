@@ -37,10 +37,7 @@ class Shop extends Controller
     public function brand()
     {       
         
-        $data = Brand::all();
         $data = Db::name('brand')->paginate(2);
-        // 把分页数据赋值给模板变量list
-        // $this->assign('list', $list);
         return $this->fetch('brand',['data'=>$data]);
     }
 
@@ -48,7 +45,6 @@ class Shop extends Controller
     /**
      * [add_brand 品牌添加]
      */
-
     public function add_brand()
     {
         if($_POST){
@@ -102,25 +98,87 @@ class Shop extends Controller
         }
     	
     }
-
+    /**
+     * [brand_del 品牌删除]
+     */
     public function brand_del()
     {
-        $brand_id=Request::instance()->param('brand_id');
-        $result = Brand::destroy($brand_id);
-        if($result)
-        {
-            $this->success("删除成功",'shop/brand');
+        if($_POST){
+            $brand_id = input('post.brand_id');
+            $id = ltrim($brand_id,',');
+            $res = Brand::destroy($id);
+            if($res){
+                $data['status']=1;
+                $data['content']="删除成功";
+            }else{
+                $data['status']=2;
+                $data['content']="删除失败";
+            }
+            echo json_encode($data);
         }else{
-            $this->error("删除失败",'shop/brand');
+            $brand_id=Request::instance()->param('brand_id');
+            $brand = Db::name('brand')->find($brand_id);
+            $brand_logo ='.'. $brand['brand_logo'];
+            $result = Brand::destroy($brand_id);
+            if($result)
+            {
+                unlink($brand_logo);
+                $this->success("删除成功",'shop/brand');
+            }else{
+                $this->error("删除失败",'shop/brand');
+            }
         }
+       
     }
-
+    /*
+    *[update_brand 品牌修改]
+    */
     public function update_brand()
     {
          $brand_id=Request::instance()->param('brand_id');
-         var_dump($brand_id);
+         $data = Brand::find($brand_id);
+         return $this->fetch('update_brand',['data'=>$data]);
     }
-
+   
+    public function brand_update_do()
+    {
+        if(request()->isPost()){
+            $old_img = input("post.old_img");
+            $file = request()->file('brand_logo');
+            if($file){
+                $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+                if($info){
+                    $apply = str_replace('\\', '/',$info->getSaveName());
+                    $brand_logo = '/uploads/'.$apply;
+                }
+            }else{
+                $brand_logo = $old_img;
+            }
+            
+            $brand = new Brand();
+            if($brand->save([
+                'brand_name'       =>  input("post.brand_name"),
+                'site_url'         =>  input("post.site_url"),
+                'is_show'          =>  input("post.is_show"),
+                'brand_desc'       =>  input("post.brand_desc"),
+                'sort_order'       =>  input("post.sort_order"),
+                'brand_logo'       =>  $brand_logo
+            ],['brand_id'=>input("post.brand_id")])){
+                if($brand_logo!=$old_img){
+                    if($old_img!=""){
+                        unlink('.'.$old_img);
+                    }
+                    
+                }
+                $this->success('修改成功', 'shop/brand');
+            }else{
+                if($brand_logo!=$old_img){
+                    unlink('.'.$brand_logo);
+                }
+                $this->error('修改失败', 'shop/brand');
+            }
+        }
+    }
 
 
 /**************商品分类管理***********************/
@@ -138,6 +196,7 @@ class Shop extends Controller
     /**
      * [add_goods_type 商品分类添加]
      */
+    
      public function add_goods_type()
     {
     	return $this->fetch();

@@ -5,5 +5,5 @@ use think\Model;
 
 class Access extends Model
 {
-
+	protected $resultSetType = 'collection';
 }
