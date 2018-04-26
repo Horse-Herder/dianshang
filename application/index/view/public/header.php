@@ -85,40 +85,23 @@
             <?php } ?>
         	<span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
+                	<a href="{:url('member/collect')}">收藏夹</a>
                     <div class="ss_list_bg">
-                    	<div class="s_city_t"></div>
-                        <div class="ss_list_c">
-                        	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
-                            </ul>
-                        </div>
+                    	
                     </div>     
                 </div>
                 <div class="ss_list">
                 	<a href="#">客户服务</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
-                        <div class="ss_list_c">
-                        	<ul>
-                            	<li><a href="#">客户服务</a></li>
-                                <li><a href="#">客户服务</a></li>
-                                <li><a href="#">客户服务</a></li>
-                            </ul>
-                        </div>
+                       
                     </div>    
                 </div>
                 <div class="ss_list">
                 	<a href="#">网站导航</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
-                        <div class="ss_list_c">
-                        	<ul>
-                            	<li><a href="#">网站导航</a></li>
-                                <li><a href="#">网站导航</a></li>
-                            </ul>
-                        </div>
+                        
                     </div>    
                 </div>
             </span>
@@ -141,7 +124,12 @@
     	<div class="car_t">购物车 [ <span>3</span> ]</div>
         <div class="car_bg">
        		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="{:url('Login/login')}" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+        	
+            <?php if (empty($user_name)) { ?>
+                <div class="un_login">还未登录！<a href="{:url('Login/login')}" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+            <?php }else{ ?>
+                <span style="color: red; margin-left: 50px;">欢迎&nbsp;<?php echo $user_name; ?>&nbsp;登陆</span>
+            <?php } ?>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
             <ul class="cars">

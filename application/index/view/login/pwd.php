@@ -108,7 +108,7 @@
 <script src="__PUBLIC__/static/index///letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
-<script src="jquery.js"></script>
+<script src="/jquery.js"></script>
 <script>
     $(document).on('click','#yzm',function(){
         var yzm = $('#y_yzm').val();

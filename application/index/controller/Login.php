@@ -29,6 +29,11 @@ class Login extends Controller
                 if (!empty($f_enter)) {
                     Cookie::set('user_name',$user_name,3600*24*7);
                 }
+                $user_id = $user_name['user_id'];
+                $data = [
+                    'last_login' => time(),
+                ];
+                $update = $Users->where('user_id',$user_id)->setField($data);
                 Session::set('user_name',$user_name);
                 return $this->success('登录成功','show/index');
             }
@@ -61,7 +66,7 @@ class Login extends Controller
                     'password' => md5(trim(input('password'))),
                     'mobile_phone' => trim(input('mobile_phone')),
                     'email' => trim(input('email')),
-                    'reg_time' => date('Y-m-d H:i:s'),
+                    'reg_time' => time(),
                 ];
                 $name = $data['user_name'];
                 $user_name = $Users->where('user_name',$name)->find();

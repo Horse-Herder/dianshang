@@ -25,13 +25,14 @@
         	<div class="m_des">
             	<table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="115"><img src="__PUBLIC__/static/index/images/user.jpg" width="90" height="90" /></td>
+                    <td width="115"><img src="{$user.answer}" width="90" height="90" /></td>
                     <td>
-                    	<div class="m_user">TRACY</div>
+                    	<div class="m_user"><a href="{:url('member/img')}">{$user.user_name}</a></div>
+
                         <p>
                             等级：注册用户 <br />
                             <font color="#ff4e00">您还差 270 积分达到 分红100</font><br />
-                            上一次登录时间: 2015-09-28 18:19:47<br />
+                            上一次登录时间: {$last_login}<br />
                             您还没有通过邮件认证 <a href="#" style="color:#ff4e00;">点此发送认证邮件</a>
                         </p>
                         <div class="m_notice">
@@ -64,17 +65,14 @@
             <div class="mem_t">账号信息</div>
             <table border="0" class="mon_tab" style="width:870px; margin-bottom:20px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="40%">用户ID：<span style="color:#555555;">12345678</span></td>
-                <td width="60%">邀请人：<span style="color:#555555;">邀请人姓名</span></td>
+                <td>电&nbsp; &nbsp; 话：<span style="color:#555555;">{$user.mobile_phone}</span></td>
+                <td>邮&nbsp; &nbsp; 箱：<span style="color:#555555;">{$user.email}</span></td>
               </tr>
               <tr>
-                <td>电&nbsp; &nbsp; 话：<span style="color:#555555;">1861111111</span></td>
-                <td>邮&nbsp; &nbsp; 箱：<span style="color:#555555;">12345678@qq.com</span></td>
+                <td>QQ号码：<span style="color:#555555;">{$user.qq}</span></td>
+                <td>注册时间：<span style="color:#555555;"><?php echo $reg_time ?></span></td>
               </tr>
-              <tr>
-                <td>身份证号：<span style="color:#555555;">522555123456789</span></td>
-                <td>注册时间：<span style="color:#555555;">2015-10-10</span></td>
-              </tr>
+
             </table>
                
             
