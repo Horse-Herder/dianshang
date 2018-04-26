@@ -36,41 +36,6 @@
                 <td><font color="#ff4e00">2015092823056</font></td>
                 <td>2015-09-26   16:45:20</td>
                 <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>已确认，已付款，已发货</td>
-                <td><font color="#ff4e00">已确认</font></td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>已确认，已付款，已发货</td>
-                <td><font color="#ff4e00">已确认</font></td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
                 <td>已确认，已付款，已发货</td>
                 <td><font color="#ff4e00">已确认</font></td>
               </tr>
@@ -84,7 +49,7 @@
             </table>
 
 
-            <div class="mem_tit">合并订单</div>
+            <!-- <div class="mem_tit">合并订单</div>
             <table border="0" class="order_tab" style="width:930px;"  cellspacing="0" cellpadding="0">
               <tr>
                 <td width="135" align="right">主订单</td>
@@ -116,7 +81,7 @@
                     收货地址，送货方式等以主定单为准。
                 </td>
               </tr>
-            </table>
+            </table> -->
 
             
         </div>

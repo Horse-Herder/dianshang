@@ -114,7 +114,11 @@
             <div class="car_t">购物车 [ <span>3</span> ]</div>
             <div class="car_bg">
                 <!--Begin 购物车未登录 Begin-->
-                <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+                <?php if (empty($user_name)) { ?>
+                <div class="un_login">还未登录！<a href="{:url('Login/login')}" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+                <?php }else{ ?>
+                    <span style="color: red; margin-left: 50px;">欢迎&nbsp;<?php echo $user_name; ?>&nbsp;登陆</span>
+                <?php } ?>
                 <!--End 购物车未登录 End-->
                 <!--Begin 购物车已登录 Begin-->
                 <ul class="cars">

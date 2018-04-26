@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/static/index/css/style.css" />
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/static/index/css/style.css" />
     <!--[if IE 6]>
     <script src="__PUBLIC__/static/index/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="__PUBLIC__/static/index/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="__PUBLIC__/static/index/js/menu.js"></script>    
         
-	<script type="text/javascript" src="__PUBLIC__/static/index/js/select.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/static/index/js/select.js"></script>
         
     
 <title>尤洪</title>
@@ -21,13 +21,14 @@
 <body>  
 <!--Begin Header Begin-->
 {include file="public/left"}
-		<div class="m_right">
-        	<div class="m_des">
-            	<table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
+    <div class="m_right">
+          <div class="m_des">
+              <table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="115"><img src="__PUBLIC__/static/index/images/user.jpg" width="90" height="90" /></td>
+                    <td width="115"><img src="{$user.answer}" width="90" height="90" /></td>
                     <td>
-                    	<div class="m_user">TRACY</div>
+                      <div class="m_user"><a href="{:url('member/img')}">{$user.user_name}</a></div>
+
                         <p>
                             等级：注册用户 <br />
                             <font color="#ff4e00">您还差 270 积分达到 分红100</font><br />
@@ -35,11 +36,11 @@
                             您还没有通过邮件认证 <a href="#" style="color:#ff4e00;">点此发送认证邮件</a>
                         </p>
                         <div class="m_notice">
-                        	用户中心公告！
+                          用户中心公告！
                         </div>
                     </td>
                   </tr>
-                </table>	
+                </table>  
             </div>
             
             <div class="mem_t">资产信息</div>
@@ -56,50 +57,27 @@
               </tr>
               <tr>
                 <td colspan="3">订单提醒：
-                	<font style="font-family:'宋体';">待付款(<span>0</span>) &nbsp; &nbsp; &nbsp; &nbsp; 待收货(<span>2</span>) &nbsp; &nbsp; &nbsp; &nbsp; 待评论(<span>1</span>)</font>
+                  <font style="font-family:'宋体';">待付款(<span>0</span>) &nbsp; &nbsp; &nbsp; &nbsp; 待收货(<span>2</span>) &nbsp; &nbsp; &nbsp; &nbsp; 待评论(<span>1</span>)</font>
                 </td>
               </tr>
             </table>
 
             <div class="mem_t">账号信息</div>
-            <table border="0" class="acc_tab" style="width:870px;" cellspacing="0" cellpadding="0">
+            <table border="0" class="mon_tab" style="width:870px; margin-bottom:20px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="td_l">用户ID： </td>
-                <td>12345678</td>
+                <td>电&nbsp; &nbsp; 话：<span style="color:#555555;">{$user.mobile_phone}</span></td>
+                <td>邮&nbsp; &nbsp; 箱：<span style="color:#555555;">{$user.email}</span></td>
               </tr>
               <tr>
-                <td class="td_l b_none">身份证号：</td>
-                <td>522124***********8</td>
+                <td>QQ号码：<span style="color:#555555;">{$user.qq}</span></td>
+                <td>注册时间：<span style="color:#555555;"><?php echo date('Y-m-d'); ?></span></td>
               </tr>
-              <tr>
-                <td class="td_l b_none">电  话：</td>
-                <td>186****1234</td>
-              </tr>
-              <tr>
-                <td class="td_l">邮   箱： </td>
-                <td>*******789@qq.com</td>
-              </tr>
-              <tr>
-                <td class="td_l b_none">注册时间：</td>
-                <td>2015/10/10</td>
-              </tr>
-              <tr>
-                <td class="td_l">完成订单：</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td class="td_l b_none">邀请人：</td>
-                <td>邀请人</td>
-              </tr>
-              <tr>
-                <td class="td_l">登录次数：</td>
-                <td>3</td>
-              </tr>
+
             </table>
                
             
         </div>
     </div>
-	<!--End 用户中心 End--> 
+  <!--End 用户中心 End--> 
     <!--Begin Footer Begin -->
-    {include file="public/footer"}
+   {include file="public/footer"}

@@ -128,7 +128,7 @@
 <script src="__PUBLIC__/static/index///letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
-<script src="/public/jq.js"></script>
+<script src="/jq.js"></script>
 <script>
 
   function reloadcode(obj) {

@@ -1,5 +1,4 @@
 <?php
-// use phpmailer\phpmailer;
 use think\Session;
 use think\Cookie;
 // +----------------------------------------------------------------------
@@ -13,11 +12,7 @@ use think\Cookie;
 // +----------------------------------------------------------------------
 
 // 应用公共文件
-// $user_name = Cookie::get('user_name');
-// if(isset($user_name)){
-//     $user_name=json_decode($user_name,true);
-//     $this->assign('user_name',$user_name);
-// }
+//用户登录信息
 function users($user_name)
 {
     $user_name = Cookie::get($user_name);
