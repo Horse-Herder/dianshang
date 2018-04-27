@@ -46,72 +46,55 @@
                 <td class="car_th" width="140">属性</td>
                 <td class="car_th" width="150">购买数量</td>
                 <td class="car_th" width="130">小计</td>
-                <td class="car_th" width="140">返还积分</td>
               </tr>
+               <?php foreach($cart_data as $k=> $val):?>
               <tr>
                 <td>
-                    <div class="c_s_img"><img src="__PUBLIC__/static/index/images/c_1.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
+                    <div class="c_s_img"><img src="<?= $val['goods_img']?>" width="73" height="73" /></div>
+                    <?= $val['goods_name']?>
                 </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr class="car_tr">
-                <td>
-                    <div class="c_s_img"><img src="__PUBLIC__/static/index/images/c_2.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
+                <td align="center">
+                   <?php for($i=0;$i<count($val[$k]);$i++){?>
+                    <p><?= $val[$k][$i]?></p>
+               <?php }?>
                 </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
+                <td align="center"><?= $val['goods_num']?></td>
+                <td align="center" style="color:#ff4e00;">￥<?= $val['goods_price']?></td>
+
               </tr>
-              <tr>
-                <td>
-                    <div class="c_s_img"><img src="__PUBLIC__/static/index/images/c_3.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr>
-                <td colspan="5" align="right" style="font-family:'Microsoft YaHei';">
-                    商品总价：￥1899.00 ； 返还积分 56R  
-                </td>
-              </tr>
+ <?php endforeach;?>
+
+
             </table>
             
             <div class="two_t">
-            	<span class="fr"><a href="#">修改</a></span>收货人信息
+            	收货人信息
             </div>
+             <form action="{:url('buycar/ding')}" method="post">
             <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="p_td" width="160">商品名称</td>
-                <td width="395">海贼王</td>
+                <td class="p_td" width="160">收货人</td>
+                <td width="395"><input type="text" name="consignee" value="{$user_address['consignee']}"></input></td>
                 <td class="p_td" width="160">电子邮件</td>
-                <td width="395">12345678@qq.com</td>
+                <td width="395"><input type="text" name="email" value="{$user_address['zipcode']}"></td>
               </tr>
               <tr>
                 <td class="p_td">详细信息</td>
-                <td>四川省成都市武侯区</td>
+                <td><input type="text" name="address" value="{$user_address['country']}{$user_address['province']}{$user_address['district']}{$user_address['address']}"></td>
                 <td class="p_td">邮政编码</td>
-                <td>6011111</td>
+                <td><input type="text" name="zipcode" value="{$user_address['zipcode']}"></input></td>
               </tr>
               <tr>
                 <td class="p_td">电话</td>
-                <td></td>
+                <td><input type="text" name="tel" value="{$user_address['tel']}"></td>
                 <td class="p_td">手机</td>
-                <td>18600002222</td>
+                <td><input type="text" name="mobile" value="{$user_address['mobile']}"></td>
               </tr>
               <tr>
                 <td class="p_td">标志建筑</td>
-                <td></td>
+                <td><input type="text" name="sign_building" value="{$user_address['sign_building']}"></td>
                 <td class="p_td">最佳送货时间</td>
-                <td></td>
+                <td><input type="text" name="best_time" value="{$user_address['best_time']}"></td>
               </tr>
             </table>
 
@@ -129,7 +112,7 @@
                 <td class="car_th" width="175">保价费用</td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="ch" checked="checked" /></td>
+              	<td align="center"><input type="radio" name="shipping_name" value="申通快递" checked="checked" /></td>
                 <td align="center" style="font-size:14px;"><b>申通快递</b></td>
                 <td>江、浙、沪地区首重为15元/KG，其他地区18元/KG，续重均为5-6元/KG， 云南地区为8元</td>
                 <td align="center">￥15.00</td>
@@ -137,7 +120,7 @@
                 <td align="center">不支持保价</td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="ch" /></td>
+              	<td align="center"><input type="radio" value="城际快递" name="shipping_name" /></td>
                 <td align="center" style="font-size:14px;"><b>城际快递</b></td>
                 <td>运费固定</td>
                 <td align="center">￥15.00</td>
@@ -145,7 +128,7 @@
                 <td align="center">不支持保价</td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="ch" /></td>
+              	<td align="center"><input type="radio" value="邮局平邮" name="shipping_name" /></td>
                 <td align="center" style="font-size:14px;"><b>邮局平邮</b></td>
                 <td>运费固定</td>
                 <td align="center">￥15.00</td>
@@ -162,14 +145,14 @@
             <div class="two_t">
             	支付方式
             </div>
-            <ul class="pay">
-                <li class="checked">余额支付<div class="ch_img"></div></li>
-                <li>银行亏款/转账<div class="ch_img"></div></li>
+            <ul class="pay" name="pay_name">
+                <li class="checked" value="支付宝">支付宝<div class="ch_img"></div></li>
+                <!-- <li>银行亏款/转账<div class="ch_img"></div></li>
                 <li>货到付款<div class="ch_img"></div></li>
-                <li>支付宝<div class="ch_img"></div></li>
+                <li>支付宝<div class="ch_img"></div></li> -->
             </ul>
             
-            <div class="two_t">
+          <!--   <div class="two_t">
             	商品包装
             </div>
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
@@ -194,9 +177,9 @@
                 <td align="center">￥0.00</td>
                 <td align="center"><a href="#" style="color:#ff4e00;">查看</a></td>
               </tr>
-            </table> 
+            </table> --> 
             
-            <div class="two_t">
+        <!--     <div class="two_t">
             	祝福贺卡
             </div>
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
@@ -228,9 +211,9 @@
                     <span class="fl"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></span>
                 </td>
               </tr>
-            </table> 
+            </table>  -->
             
-            <div class="two_t">
+        <!--     <div class="two_t">
             	其他信息
             </div>
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
@@ -262,25 +245,30 @@
                     <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">与店主协商</label>
                 </td>
               </tr>
+            </table> -->
+            <table>
+              <tr valign="top">
+                <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单附言：</b></td>
+                <td style="padding-left:0;"><textarea class="add_txt" style="width:860px; height:50px;" name="to_buyer"></textarea></td>
+              </tr>
             </table>
-            
             <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
               <tr>
                 <td align="right">
-                	该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font color="#ff4e00">￥0.00</font> 的红包 <br />
-                    商品总价: <font color="#ff4e00">￥1815.00</font>  + 配送费用: <font color="#ff4e00">￥15.00</font>
+     <!--            	该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font color="#ff4e00">￥0.00</font> 的红包 <br /> -->
+                    商品总价: <font color="#ff4e00">￥<?= $val['goods_price']?></font>  + 配送费用: <font color="#ff4e00">￥15.00</font>
                 </td>
               </tr>
               <tr height="70">
                 <td align="right">
-                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥2899</span></b>
+                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥{$num_price}</span></b>
                 </td>
               </tr>
               <tr height="70">
-                <td align="right"><a href="#"><img src="__PUBLIC__/static/index/images/btn_sure.gif" /></a></td>
+                <td align="right"><input type="submit" value="提交订单"></input>/td>
               </tr>
             </table>
-
+          </form>
             
         	
         </div>

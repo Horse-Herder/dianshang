@@ -19,7 +19,7 @@
 <script src="js/respond.min.js"></script>
 <script src="js/css3-mediaqueries.js"  type="text/javascript"></script>
   <![endif]-->
-<title>添加产品</title>
+<title>修改产品</title>
 </head>
 
 <body>
@@ -27,11 +27,12 @@
 <div class="margin">
 <div class="add_style">
  <ul>
-  <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>商品名称：&nbsp;&nbsp;</label><div class="Add_content col-xs-11"><input name="goods_name" type="text"  class="col-xs-6"/></div></li>
+ <input type="hidden" name="goods_id" value="{$goods_data['goods_id']}"></input>
+  <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>商品名称：&nbsp;&nbsp;</label><div class="Add_content col-xs-11"><input name="goods_name" type="text" value="{$goods_data['goods_name']}"  class="col-xs-6"/></div></li>
 
   <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>商品图片：&nbsp;&nbsp;</label><div class="Add_content col-xs-11"><input name="goods_img" type="file"  class="col-xs-6"/></div></li>
 
-  <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>简单描述：&nbsp;&nbsp;</label><div class="Add_content col-xs-11"><input name="goods_brief" type="text" class="col-xs-4"/></div></li>
+  <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>简单描述：&nbsp;&nbsp;</label><div class="Add_content col-xs-11"><input name="goods_brief" value="{$goods_data['goods_brief']}" type="text" class="col-xs-4"/></div></li>
  <!--   <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>关&nbsp;键&nbsp;字：&nbsp;&nbsp;</label><div class="Add_content col-xs-11"><input name="" type="text" class="col-xs-4"/><em class="Prompt"> 请用","分隔关键字</em></div></li> -->
  <!--  <li class="clearfix">
    <label class="label_name col-xs-1"><i>*</i>产品分类：&nbsp;&nbsp;</label>
@@ -55,19 +56,19 @@
       <div class="col-xs-4">
      <label class="label_name col-xs-3"><i>*</i>商品原价：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9">
-    <input name="market_price" type="text"  class="col-xs-7"/><em class="Prompt">元</em>
+    <input name="market_price" value="{$goods_data['market_price']}" type="text"  class="col-xs-7"/><em class="Prompt">元</em>
     </div>   
     </div>
     <div class="col-xs-4">
     <label class="label_name col-xs-3"><i>*</i>商品现价：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9">
-   <input name="shop_price" type="text"  class="col-xs-7"/><em class="Prompt">元</em>
+   <input name="shop_price" type="text"  value="{$goods_data['shop_price']}" class="col-xs-7"/><em class="Prompt">元</em>
     </div>   
     </div>
     <div class="col-xs-4">
     <label class="label_name col-xs-3"><i>*</i>商品数量：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9">
-   <input name="goods_number" type="text"  class="col-xs-7"/><em class="Prompt">件</em>
+   <input name="goods_number" value="{$goods_data['goods_number']}" type="text"  class="col-xs-7"/><em class="Prompt">件</em>
     </div>   
     </div>
     </li>
@@ -75,8 +76,8 @@
     <div class="Add_content col-xs-11">
     <!-- <label class="l_f checkbox_time"><input type="checkbox" class="ace" id="checkbox"><span class="lbl">是</span></label> -->
     <div class="Date_selection">
-      <span class="label_name">开始日：</span><input name="promote_start_date" class="laydate-icon" id="start" style="width:200px; margin-right:10px; height:30px; line-height:30px; float:left"></input>
-      <span class="label_name">结束日：</span><input name="promote_end_date" class="laydate-icon" id="end" style="width:200px;height:30px; line-height:30px; float:left"></input>
+      <span class="label_name">开始日：</span><input name="promote_start_date"  value="{$goods_data['promote_start_date']}" class="laydate-icon" id="start" style="width:200px; margin-right:10px; height:30px; line-height:30px; float:left"></input>
+      <span class="label_name">结束日：</span><input name="promote_end_date" value="{$goods_data['promote_end_date']}" class="laydate-icon" id="end" style="width:200px;height:30px; line-height:30px; float:left"></input>
     </div>
     </div>   
     </li>
@@ -114,7 +115,11 @@
      <label class="label_name col-xs-3">商品分类：&nbsp;&nbsp;</label> 
         <select name="cat_id">
             <?php foreach($goods_type_data as $val):?>
+            <?php if($goods_data['cat_id']==$val['cat_id']){?>
+            <option value="{$val.cat_id}" selected="selected">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cat_name}</option>
+            <?php }else{?>
             <option value="{$val.cat_id}">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cat_name}</option>
+            <?php }?>
              <?php endforeach;?>
 
           </select>  
@@ -127,7 +132,11 @@
 
          <select name="brand_id">
          <?php foreach($goods_brand as $val):?>
-           <option value="<?= $val['brand_id']?>"><?= $val['brand_name']?></option>
+           <?php if($goods_data['brand_id']==$val['brand_id']){?>
+           <option value="<?= $val['brand_id']?>" checked="checkeds"><?= $val['brand_name']?></option>
+           <?php }else{?>
+            <option value="<?= $val['brand_id']?>"><?= $val['brand_name']?></option>
+            <?php }?>
          <?php endforeach;?>
          </select>
 
@@ -138,8 +147,13 @@
       <div class="col-xs-4">
      <label class="label_name col-xs-3">是否上架：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9" >
-    <input type="radio" value="1" name="is_on_sale">是</input>
+    <?php if($goods_data['is_on_sale']==1){?>
+    <input type="radio" value="1" checked="checked" name="is_on_sale">是</input>
     <input type="radio" value="0" name="is_on_sale">否</input>
+    <?php }else{?>
+    <input type="radio" value="1" name="is_on_sale">是</input>
+    <input type="radio" value="0" checked="checked" name="is_on_sale">否</input>
+    <?php }?>
    <!--  <label><input type="radio" name="checkbox" class="ace" checked="checked"><span class="lbl">是</span></label>
     <label><input type="radio" name="checkbox" class="ace"><span class="lbl">否</span></label> -->
     </div>   
@@ -157,8 +171,13 @@
       <div class="col-xs-4">
      <label class="label_name col-xs-3">是否精品：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9">
+    <?php if($goods_data['is_best']==1){?>
+   <input type="radio" checked="checked" value="1" name="is_best">是</input>
+   <input type="radio" value="0" name="is_best">否</input>
+   <?php }else{?>
    <input type="radio" value="1" name="is_best">是</input>
-    <input type="radio" value="0" name="is_best">否</input>
+    <input type="radio" checked="checked" value="0" name="is_best">否</input>
+   <?php }?>
     </div>   
     </div>
     </li>
@@ -166,8 +185,16 @@
       <div class="col-xs-4">
      <label class="label_name col-xs-3">是否新品：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9">
-    <input type="radio" value="1" name="is_new">是</input>
+
+    <?php if($goods_data['is_new']==1){?>
+    <input type="radio" value="1" checked="checked" name="is_new">是</input>
     <input type="radio" value="0" name="is_new">否</input>
+   <?php }else{?>
+    <input type="radio" value="1" name="is_new">是</input>
+    <input type="radio" value="0" checked="checked" name="is_new">否</input>
+   <?php }?>
+
+
     </div>   
     </div>
   </li>
@@ -175,13 +202,19 @@
       <div class="col-xs-4">
      <label class="label_name col-xs-3">是否热销：&nbsp;&nbsp;</label> 
     <div class="Add_content col-xs-9">
-    <input type="radio" value="1" name="is_hot">是</input>
+      <?php if($goods_data['is_hot']==1){?>
+    <input type="radio" value="1" checked="checked" name="is_hot">是</input>
     <input type="radio" value="0" name="is_hot">否</input>
+   <?php }else{?>
+    <input type="radio" value="1" name="is_hot">是</input>
+    <input type="radio" value="0" checked="checked" name="is_hot">否</input>
+   <?php }?>
+    
     </div>   
     </div>
   </li>
       <li class="clearfix">
-     <label class="label_name col-xs-1"><i>*</i>相册图片：&nbsp;&nbsp;</label>
+     <label class="label_name col-xs-1"><i>*</i>产品图片：&nbsp;&nbsp;</label>
       <span class="span_img">
       <input type="file" name="img[]"></input>
 <!--       <a href="javascript:;" class="del_img">[-]</a> -->
@@ -198,7 +231,7 @@
      </div> -->
      </li>
      <li class="clearfix"><label class="label_name col-xs-1"><i>*</i>内容介绍：&nbsp;&nbsp;</label>
-     <div class="Add_content col-xs-11"><script name="goods_desc" id="editor" type="text/plain" style="width:100%;height:500px;"></script></div>
+     <div class="Add_content col-xs-11"><script name="goods_desc" id="editor" type="text/plain" style="width:100%;height:500px;">{$goods_data['goods_desc']}</script></div>
      </li>  
  </ul>
  <div class="Button_operation btn_width">
@@ -215,12 +248,8 @@
     <script type="text/javascript" charset="utf-8" src="js/utf8-jsp/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/utf8-jsp/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="js/utf8-jsp/lang/zh-cn/zh-cn.js"></script>
-  
+  <script type="text/javascript" src="/Public/jquery.1.12.js"></script>
 <script>
-
- 
-
-
 
 
 $(function(){

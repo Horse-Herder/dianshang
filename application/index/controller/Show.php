@@ -4,7 +4,8 @@ use think\Request;
 use think\Controller;
 use think\Session;
 use think\Cookie;
-use think\Db;
+use \think\Db;
+
 error_reporting(0);//关闭错误报告
 class Show extends Controller
 {
@@ -80,17 +81,64 @@ class Show extends Controller
         foreach ($shuxing as $key => $value) {
                 $sku_name_one[$value['shuxing_name']]=$sku_name[$key];
         }
-        // print_r($goods_data);die;
         $this->assign('goods_data',$goods_data);
         $this->assign('array',$array);
         $this->assign('sku_one',$sku_one);
         $this->assign('sku_name_one',$sku_name_one);
         $this->assign('goods_imgs',$goods_imgs);
-        $user_name = users('user_name')['user_name'];
-        if(isset($user_name)){
-            $this->assign('user_name',$user_name);
-        }
         return $this->fetch();
+    }
+    public function shopping()
+    {
+        $user_id=users('user_name')['user_id'];
+        if(empty($user_id))
+        {
+           echo 0;die;
+        }
+        $data['goods_id']=input('post.goods_id');
+        $data['sku']=input('post.sku');
+        $data['goods_num']=input('post.n_ipt'); 
+        $cart_data=Db::name('cart')->where([
+                         'goods_id'=>$data['goods_id'],
+                              'sku'=>$data['sku']
+                              ])->find();
+        if($cart_data)
+        {
+            $data['goods_num']=$cart_data['goods_num']+$data['goods_num'];
+            $data['goods_price']=input("post.price")*$data['goods_num'];
+            $res=Db::table('ecs_cart')->where([
+                         'goods_id'=>$data['goods_id'],
+                              'sku'=>$data['sku']])
+                                   ->update([
+                                   'goods_num'=>$data['goods_num'],
+                                   'goods_price'=>$data['goods_price']
+                                    ]);
+            if($res)
+            {
+                echo 1;
+            }else
+            {
+                echo 2;
+            }die;
+        }else
+            {
+                $data['goods_price']=input("post.price")*$data['goods_num'];
+                $goods_data=Db::table('ecs_goods')
+                           ->where("goods_id",$data['goods_id'])
+                           ->find();
+                $data['goods_name']=$goods_data['goods_name'];
+                $data['goods_img']=$goods_data['goods_img'];
+                $data['user_id']=$user_id;
+                $res=Db::table('ecs_cart')->insert($data);
+                if($res)
+                {
+                    echo 1;
+                }else
+                {
+                    echo 2;
+                }
+           }
+          
     }
 
 }
