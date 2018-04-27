@@ -32,15 +32,12 @@
    <div class="l_f logo"><img src="images/logo_03.png" /></div>
    <div class="r_f Columns_top clearfix">
    <!--<div class="time_style"><i class="fa  fa-clock-o"></i><span id="time"></span></div>-->
-   <div class="news l_f"><a href="javascript:void(0)" class="fa  fa-bell "></a><em>5</em></div>
-     <div class="administrator l_f">
-       <img src="images/avatar.png"  width="36px"/><span class="user-info">欢迎你,超级管理员</span><i class="glyph-icon fa  fa-caret-down"></i>
+   <div class="administrator l_f">
+       <img src="<?=$session['user_img'] ?>"  width="36px"/><span class="user-info">欢迎你,<?=$session['user_name'] ?></span><i class="glyph-icon fa  fa-caret-down"></i>
        <ul class="dropdown-menu">
-        <li><a href="javascript:void(0)"><i class="fa fa-user"></i>个人信息</a></li>
-        <li><a href="javascript:void(0)"><i class="fa fa-cog"></i>系统设置</a></li>
-        <li><a href="javascript:void(0)" id="Exit_system"><i class="fa fa-user-times"></i>退出</a></li>
+        <li><a href="{:url('admin/login/login_del')}" id="Exit_system"><i class="fa fa-user-times"></i>退出</a></li>
        </ul>
-     </div>
+     
    </div>
   </div>
 <!--左侧-->
