@@ -1,3 +1,7 @@
+<?php 
+use think\Session;
+$session = Session::get('user','admin');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,12 +36,13 @@
    <div class="l_f logo"><img src="images/logo_03.png" /></div>
    <div class="r_f Columns_top clearfix">
    <!--<div class="time_style"><i class="fa  fa-clock-o"></i><span id="time"></span></div>-->
+ <div class="news l_f"><a href="javascript:ovid()" class="fa  fa-bell "></a><em></em></div>
    <div class="administrator l_f">
        <img src="<?=$session['user_img'] ?>"  width="36px"/><span class="user-info">欢迎你,<?=$session['user_name'] ?></span><i class="glyph-icon fa  fa-caret-down"></i>
        <ul class="dropdown-menu">
         <li><a href="{:url('admin/login/login_del')}" id="Exit_system"><i class="fa fa-user-times"></i>退出</a></li>
        </ul>
-     
+     </div>
    </div>
   </div>
 <!--左侧-->
