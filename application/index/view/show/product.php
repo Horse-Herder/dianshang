@@ -137,6 +137,7 @@
                     </div>
                 </div>
                 <div class="d_care"><a onclick="ShowDiv('MyDiv','fade')">关注商品</a></div>
+		<div class="d_care"><a onclick="ShowDiv('MyDiv','fade')">收藏</a></div>    
             </div>
             <div class="des_join">
             	<div class="j_nums">
