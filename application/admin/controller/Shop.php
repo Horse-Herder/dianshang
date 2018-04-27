@@ -4,9 +4,9 @@ use think\Controller;
 use app\admin\model\Brand;
 use think\Db;  
 use think\Request;
+use app\admin\controller\Base;
 
-
-class Shop extends Controller
+class Shop extends Base
 {
 
 
