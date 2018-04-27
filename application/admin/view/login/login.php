@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--  --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <base href="__PUBLIC__/static/admin/" />
@@ -29,21 +29,18 @@
       <div class="clearfix">
        <div class="login_icon"><img src="images/login_bg.png" /></div>
        <div class="add_login_cont Reg_log_style ">
-        <form class="" id="">
+        <form action="{:url('login/login_do')}" method="post">
          <ul class="r_f">
-          <li class="frame_style form_error"><label class="user_icon"></label><input name="username" data-name="用户名" type="text" id="username"><i>用户名</i></li>
-          <li class="frame_style form_error"><label class="password_icon"></label><input name="userpwd" data-name="密码" type="password" id="userpwd"><i>密码</i></li>
-          <li class="frame_style form_error">
-          <label class="Codes_icon"></label><input name="Codes_text" type="text"  data-name="验证码" id="Codes_text" class="Codes_text"><i>验证码</i>
+          <li class="frame_style form_error"><label class="user_icon"></label><input name="user_name" data-name="用户名" type="text" id="username"><i>用户名</i></li>
+          <li class="frame_style form_error"><label class="password_icon"></label><input name="user_pwd" data-name="密码" type="password" id="userpwd"><i>密码</i></li>
           <div class="Codes_region"></div>
           </li> 
+          <input type="submit" style="width:200px;" class="button_width  btn btn-sm btn-primary" id="login_btn" value="登录">
          
          </ul>       
         </form>
        </div>
        <div class="login_Click_Actions">          
-          <button type="button" class="button_width  btn btn-sm btn-primary" id="login_btn"><i class="fa fa-key"></i>&nbsp;&nbsp;登录</button>
-          <p><label class="inline"><input type="checkbox" class="ace"><span class="lbl">保存密码</span></label></p>
        </div>
       </div>
       <div class="social-or-login center"><span class="">通知</span></div>
@@ -56,49 +53,20 @@
 </body>
 </html>
 <script type="text/javascript">
-$('#login_btn').on('click', function(){
-	     var num=0;
-		 var str="";
-     $("input[type$='text'],input[type$='password']").each(function(n){
-          if($(this).val()=="")
-          {
-               
-			   layer.alert(str+=""+$(this).attr("data-name")+"不能为空！\r\n",{
-                title: '提示框',				
-				icon:0,								
-          }); 
-		    num++;
-            return false;            
-          } 
-		 });
-		  if(num>0){  return false;}	 	
-          else{
-			  layer.alert('登陆成功！',{
-               title: '提示框',				
-			   icon:1,		
-			  });
-	          location.href="shops_index.html";
-			   layer.close(index);	
-		  }		  		     								
+$('#login_btn').click(function(){
+     user_name=$("#username").val();
+	   user_pwd=$("#userpwd").val();
+     if(user_name == ""){
+        alert("用户名不能为空");
+        return false;
+     }
+     if(user_pwd == ""){
+        alert("密码不能为空");
+        return false;
+     }
 	});
-  $(document).ready(function(){
-	 $("input[type='text'],input[type='password']").blur(function(){
-        var $el = $(this);
-        var $parent = $el.parent();
-        $parent.attr('class','frame_style').removeClass(' form_error');
-        if($el.val()==''){
-            $parent.attr('class','frame_style').addClass(' form_error');
-        }
-    });
-	$("input[type='text'],input[type='password']").focus(function(){		
-		var $el = $(this);
-        var $parent = $el.parent();
-        $parent.attr('class','frame_style').removeClass(' form_errors');
-        if($el.val()==''){
-            $parent.attr('class','frame_style').addClass(' form_errors');
-        } else{
-			 $parent.attr('class','frame_style').removeClass(' form_errors');
-		}
-	});
- })
+  
 </script>
+
+
+

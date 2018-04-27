@@ -25,7 +25,7 @@
 <body>
 <div class="margin Competence_style" id="page_style">
     <div class="operation clearfix">
-<button class="btn button_btn btn-danger" type="button" onclick=""><i class="fa fa-trash-o"></i>&nbsp;删除</button>
+<button class="btn button_btn btn-danger-all" type="button" ><i class="fa fa-trash-o"></i>&nbsp;删除</button>
 <a href="{:url('admin/user/add_user')}"  class="btn button_btn bg-deep-blue" title="添加管理员"><i class="fa  fa-edit"></i>&nbsp;添加管理员</a>
   <select class="select Competence_sort" name="admin-role" size="1" id="Competence_sort">
 					<option value="0">--选择分类--</option>
@@ -35,69 +35,39 @@
 				</select>
    <div class="search  clearfix">
 
-   <input name="" type="text"  class="form-control col-xs-8"/><button class="btn button_btn bg-deep-blue " onclick=""  type="button"><i class="fa  fa-search"></i>&nbsp;搜索</button>
+   <input name="" type="text"  class="form-control col-xs-8"/><button class="btn button_btn bg-deep-blue "  type="button"><i class="fa  fa-search"></i>&nbsp;搜索</button>
 </div>
 </div>
 <div class="compete_list">
        <table id="sample_table" class="table table_list table_striped table-bordered dataTable no-footer">
 		 <thead>
 			<tr>
-			  <th class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+			  <th class="center"><label><input type="checkbox" id="all" class="ace"><span class="lbl"></span></label></th>
 			  <th>登录名</th>
 			  <th>手机</th>
               <th>邮箱</th>
               <th>角色</th>
-			  <th class="hidden-480">加入时间</th>  
-              <th>状态</th>         
+			  <th class="hidden-480">加入时间</th>          
 			  <th class="hidden-480">操作</th>
              </tr>
 		    </thead>
-             <tbody>
+             <tbody id="list">
+             <?php foreach ($user_info as $key => $val): ?>
+             	
 			  <tr>
-				<td class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-				<td>admin123456</td>
-				<td>13567878908</td>
-				<td >3456778@qq.com</td>
+				<td class="center"><label><input type="checkbox" name="user_id[]" value="<?=$val['user_id'] ?>" class="ace"><span class="lbl"></span></label></td>
+				<td><?=$val['user_name'] ?></td>
+				<td><?=$val['user_phone'] ?></td>
+				<td ><?=$val['user_email'] ?></td>
 				<td>超级管理员</td>
-                <td>2016-9-20 10:23:23</td>
-                <td class="td-status"><span class="label label-success label-sm">已启用</span></td>
+                <td><?=date('Y-m-d H:i:s',$val['add_time']) ?></td>
 				<td class="td-manage">
-                 <a title="停用" onclick="Competence_close(this,'12')" href="javascript:;" class="btn button_btn btn-Dark-success">停用</a> 
-                 <a title="编辑" onclick="Competence_modify('560')" href="javascript:;" class="btn button_btn bg-deep-blue">编辑</a>        
-                 <a title="删除" href="javascript:;" onclick="Competence_del(this,'1')" class="btn button_btn btn-danger">删除</a>
+                 <a title="编辑" onclick="Competence_modify('560')" href="javascript:;"  class="btn button_btn bg-deep-blue">编辑</a>        
+                 <a title="删除" href="javascript:;" onclick="Competence_del(this,'1')" id="<?=$val['user_id'] ?>" class="btn button_btn btn-danger">删除</a>
                  <a title="查看" href="javascript:;" onclick="Competence_View(this,'1')" class="btn button_btn btn-green">查看</a>
 				</td>
-			   </tr>
-               <tr>
-				<td class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-				<td>化海天堂</td>
-				<td>13567878908</td>
-				<td >3456778@qq.com</td>
-				<td>普通管理员</td>
-                <td>2016-9-20 10:23:23</td>
-                <td class="td-status"><span class="label label-success label-sm">已启用</span></td>
-				<td class="td-manage">
-                  <a title="停用" onclick="Competence_close(this,'12')" href="javascript:;" class="btn button_btn btn-Dark-success">停用</a> 
-                 <a title="编辑" onclick="Competence_modify('560')" href="javascript:;" class="btn button_btn bg-deep-blue">编辑</a>        
-                 <a title="删除" href="javascript:;" onclick="Competence_del(this,'1')" class="btn button_btn btn-danger">删除</a>
-                 <a title="查看" href="javascript:;" onclick="Competence_View(this,'1')" class="btn button_btn btn-green">查看</a>
-				</td>
-			   </tr>
-               <tr>
-				<td class="center"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-				<td>admin</td>
-				<td>13567878908</td>
-				<td >3456778@qq.com</td>
-				<td>普通管理员</td>
-                <td>2016-9-10 10:23:23</td>
-                <td class="td-status"><span class="label label-success label-sm">已启用</span></td>
-				<td class="td-manage">
-                   <a title="停用" onclick="Competence_close(this,'12')" href="javascript:;" class="btn button_btn btn-Dark-success">停用</a> 
-                 <a title="编辑" onclick="Competence_modify('560')" href="javascript:;" class="btn button_btn bg-deep-blue">编辑</a>        
-                 <a title="删除" href="javascript:;" onclick="Competence_del(this,'1')" class="btn button_btn btn-danger">删除</a>
-                 <a title="查看" href="javascript:;" onclick="Competence_View(this,'1')" class="btn button_btn btn-green">查看</a>
-				</td>
-			   </tr>												
+			  </tr>								
+             <?php endforeach ?>
 		      </tbody>
 	        </table>
      </div>
@@ -128,33 +98,63 @@ $("body").niceScroll({
 	cursorborder:"0",  
 	cursorborderradius:"5px"  
 });
-/*管理员-停用*/
-function Competence_close(obj,id){
-	layer.confirm('确认要停用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn button_btn btn-gray" onClick="Competence_start(this,id)" href="javascript:;" title="启用">启用</a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success label-sm">已停用</span>');
-		$(obj).remove();
-		layer.msg('已停用!',{icon: 5,time:1000});
-	});
-}
 
-/*管理员-启用*/
-function Competence_start(obj,id){
-	layer.confirm('确认要启用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn button_btn  btn-Dark-success" onClick="Competence_close(this,id)" href="javascript:;" title="停用">停用</a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success label-sm">已启用</span>');
-		$(obj).remove();
-		layer.msg('已启用!',{icon: 6,time:1000});
-	});
-}
-/****复选框选中******/
-$('table th input:checkbox').on('click' , function(){
-					var that = this;
-					$(this).closest('table').find('tr > td:first-child input:checkbox')
-					.each(function(){
-						this.checked = that.checked;
-						$(this).closest('tr').toggleClass('selected');
-					});
-						
-				});
+$("#all").click(function(){   
+    if(this.checked){   
+        $("#list :checkbox").prop("checked", true);  
+      }else{   
+        $("#list :checkbox").prop("checked", false);
+      }   
+});
+
+
+//删除单条
+$(".btn-danger").click(function(){
+	obj = $(this);
+	var user_id = $(this).attr('id'); 
+	$.ajax({ 
+		type:"GET",
+		url: "{:url('admin/user/user_del')}",
+		data:"user_id="+user_id,
+		dataType:"json",
+		success: function(msg){
+			if(msg.status==1){
+				obj.parent().parent().remove();
+			}else{
+				alert(msg.error);
+			}
+      	}
+  	});
+})
+
+
+//删除多条
+$(".btn-danger-all").click(function(){
+
+	var str = "";  
+    $.each($("input[name='user_id']"), function (k, v) {  
+        if (v.checked == false) {  
+            return;  
+        } else {  
+            str += v.value + ",";  
+        }
+    }); 
+
+    alert(str); 
+	/*obj = $(this);
+	var user_id = $(this).attr('id'); 
+	$.ajax({ 
+		type:"GET",
+		url: "{:url('admin/user/user_del')}",
+		data:"user_id="+user_id,
+		dataType:"json",
+		success: function(msg){
+			if(msg.status==1){
+				obj.parent().parent().remove();
+			}else{
+				alert(msg.error);
+			}
+      	}
+  	});*/
+})
 </script>

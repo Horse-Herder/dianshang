@@ -5,7 +5,7 @@ use think\Request;//引入request
 use think\DB;
 use app\admin\model\guang;//引入模型层
 header("content-type:text/html;charset=UTF-8");//防乱码
-class Guanggao extends Controller
+class Guanggao extends Base
 {
 
     public function add()

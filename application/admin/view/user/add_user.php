@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,13 +10,12 @@
 <link href="css/bkg_ui.css" type="text/css"  rel="stylesheet" />
 <link href="font/css/font-awesome.min.css"  rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.9.1.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="js/Validform/Validform.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script src="js/shopFrame.js" type="text/javascript"></script>
 <script src="js/Sellerber.js" type="text/javascript"></script>
 <script src="js/layer/layer.js" type="text/javascript"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/jquery.dataTables.bootstrap.js"></script>
-<title>权限设置</title>
+<title>添加管理员</title>
 </head>
 <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
@@ -23,126 +23,145 @@
   <script src="js/css3-mediaqueries.js"  type="text/javascript"></script>
   <![endif]-->
 <body>
-<div class="margin" id="page_style">
-<div class=" add_Competence_style margin" id="add_Competence_style">
-   <ul class="add_style">
-    <li class="clearfix"><label class="label_name col-xs-1 col-lg-2">权限名称：</label><span class="col-xs-6"><input name="" type="text"  class="col-xs-5"/></span></li>
-    <li class="clearfix"><label class="col-xs-1 col-lg-2 label_name" for="form-field-1">权限描述：</label>
-    <span class="col-xs-6"><textarea name="权限描述" class="form-control col-xs-10" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea><span class="wordage">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></span>
-    </li>
-    <li class="clearfix"><label class="col-xs-1 col-lg-2 label_name" for="form-field-1">选择用户：</label>
-    <div class="col-xs-6 admin_name clearfix">
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> sm123456</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> admin</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> admin123456</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> style_name</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> username</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> adminname</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl"> sm12345</span></label>
-       <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">化海天天</span></label>
-	</div></li>
-   </ul>
-</div>
-<div class="Competence_list">
-  <div class="title_name"><span>权限列表</span></div>
-  <div class="list_cont clearfix">
-   <div class="clearfix col-xs-4 col-lg-6 ">
-    <dl class="Competence_name"> 
-     <dt class="Columns_One"><label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">商品管理</span></label></dt>
-     <dd class="permission_list clearfix">
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">商品列表</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">品牌管理</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">分类管理</span></label>
-     </dd>
-    </dl>
-   </div>
-   <div class="clearfix col-xs-4 col-lg-6">
-   <dl class="Competence_name">
-    <dt class="Columns_One"><label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">账户管理</span></label></dt>
-    <dd class="permission_list clearfix">
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">支付方式</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">支付设置</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">账户设置</span></label>
-    </dd>
-   </dl>
-   </div>
-   <div class="clearfix col-xs-4 col-lg-6">
-   <dl class="Competence_name">
-    <dt class="Columns_One"><label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">广告管理</span></label></dt>
-    <dd class="permission_list clearfix">
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">广告列表</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">广告分类</span></label>
-    </dd>
-   </dl>
-   </div>
-    <div class="clearfix col-xs-4 col-lg-6">
-   <dl class="Competence_name">
-    <dt class="Columns_One"><label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">管理名称</span></label></dt>
-    <dd class="permission_list clearfix">
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">栏目名称</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">栏目名称</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">栏目名称</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">栏目名称</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">栏目名称</span></label>
-     <label class="middle"><input class="ace" type="checkbox" id="id-disable-check"><span class="lbl">栏目名称</span></label>
-    </dd>
-   </dl>
-   </div>
+<div class="margin add_administrator" id="page_style">
+    <div class="add_style add_administrator_style">
+    <div class="title_name">添加管理员</div>
+    <form action="{:url('admin/user/add_user')}" method="post" enctype="multipart/form-data" id="form-admin-add">
+    <ul>
+     <li class="clearfix">
+     <label class="label_name col-xs-2 col-lg-2"><i>*</i>用户名：</label>
+     <div class="formControls col-xs-6">
+     <input type="text" class="input-text col-xs-12" value="" placeholder="" id="user-name" name="user_name" datatype="*2-16" nullmsg="用户名不能为空"></div>
+    <div class="col-4"> <span class="Validform_checktip"></span></div>
+     </li>
+     <li class="clearfix">
+     <label class="label_name col-xs-2 col-lg-2"><i class="c-red">*</i>初始密码：</label>
+   <div class="formControls col-xs-6">
+   <input type="password" placeholder="密码" name="password" autocomplete="off" value="" class="input-text col-xs-12" datatype="*6-20" nullmsg="密码不能为空">
   </div>
-</div>
-<!--按钮操作-->
-<div class="Button_operation btn_width">
-    <button class="btn button_btn bg-deep-blue" type="button">提交</button>
-    <button class="btn button_btn bg-gray" type="button">取消添加</button>
-    <a href="javascript:ovid()" onclick="javascript :history.back(-1);" class="btn btn-info button_btn"><i class="fa fa-reply"></i> 返回上一步</a>
- </div>
+     <div class="col-4"> <span class="Validform_checktip"></span></div>
+     </li>
+     <li class="clearfix">
+       <label class="label_name col-xs-2 col-lg-2"><i class="c-red">*</i>确认密码：</label>
+       <div class="formControls  col-xs-6">
+  <input type="password" placeholder="确认新密码" autocomplete="off" class="input-text Validform_error  col-xs-12" errormsg="您两次输入的密码不一致！" datatype="*" nullmsg="请再输入一次新密码！" recheck="password" id="newpassword2" name="qr_password">
+        </div>
+    <div class="col-4"> <span class="Validform_checktip"></span></div>
+     </li>
+     <li class="clearfix">
+      <label class="label_name col-xs-2 col-lg-2"><i class="c-red">*</i>性&nbsp;别：</label>
+      <div class="formControls  skin-minimal col-xs-6">
+            <label><input name="user_sex" value="0" type="radio" class="ace" checked="checked"><span class="lbl">保密</span></label>&nbsp;&nbsp;
+            <label><input name="user_sex" value="1" type="radio" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;
+            <label><input name="user_sex" value="2" type="radio" class="ace"><span class="lbl">女</span></label>
+    </div>
+     </li>
+      <li class="clearfix">
+        <label class="label_name col-xs-2 col-lg-2">头像上传：</label>
+            <div class="line"> 
+                <span class="span"> 
+                  <input name="user_img" type="file"  > 
+                </span>
+            </div>
+
+    </li>
+     <li class="clearfix">
+      <label class="label_name col-xs-2 col-lg-2"><i class="c-red">*</i>手&nbsp;机：</label>
+      <div class="formControls col-xs-6">
+    <input type="text" class="input-text col-xs-12" value="" placeholder="" id="user-tel" name="user_phone" datatype="m" nullmsg="手机不能为空">
+    </div>
+   <div class="col-4"> <span class="Validform_checktip"></span></div>
+     </li>
+     <li class="clearfix">
+      <label class="label_name col-xs-2 col-lg-2"><i class="c-red">*</i>邮&nbsp;箱：</label>
+      <div class="formControls col-xs-6">
+    <input type="text" class="input-text col-xs-12" placeholder="@" name="user_email" id="email" datatype="e" nullmsg="请输入邮箱！">
+     </div>
+    <div class="col-4"> <span class="Validform_checktip"></span></div>
+     </li>
+     <li class="clearfix">
+      <label class="label_name col-xs-2 col-lg-2"><i class="c-red">*</i>角&nbsp;色：</label>
+      <div class="formControls col-xs-6"> <span class="select-box" style="width:150px;">
+        <select class="select" name="access_id" size="1">
+          <option value="0">请选择...</option>
+          <?php foreach ($accessInfo as $key => $val): ?>
+              <option value="<?= $val['access_id'] ?>"><?= $val['access_name'] ?></option>
+          <?php endforeach ?>
+        </select>
+        </span>
+         </div>
+     </li>
+     <li class="clearfix">
+      <label class="label_name col-xs-2 col-lg-2">备&nbsp;注：</label>
+      <div class="formControls col-xs-6">
+        <textarea name="user_desc" cols="" rows="" class="textarea col-xs-12" placeholder="说点什么...100个字符以内" dragonfly="true" onkeyup="checkLength(this);"></textarea>
+        <span class="wordage">剩余字数：<span id="sy" style="color:Red;">100</span>字</span>
+      </div>
+    </li>
+         <li class="clearfix">
+      <div class="col-xs-2 col-lg-2">&nbsp;</div>
+      <div class="col-xs-6">
+    <input class="btn button_btn bg-deep-blue " type="submit" id="Add_Administrator" value="提交注册">
+      <input name="reset" type="reset" class="btn button_btn btn-gray" value="取消重置" />
+      <a href="javascript:ovid()" onclick="javascript :history.back(-1);" class="btn btn-info button_btn"><i class="fa fa-reply"></i> 返回上一步</a>
+      </div>
+    </li>
+    </ul>
+    </form>
+    </div>
+    <div class="split_line"></div>
+    <div class="Notice_style l_f">
+      
+    </div>
 </div>
 </body>
 </html>
-<script type="text/javascript">
+<script>
+
 /*******滚动条*******/
 $("body").niceScroll({  
-	cursorcolor:"#888888",  
-	cursoropacitymax:1,  
-	touchbehavior:false,  
-	cursorwidth:"5px",  
-	cursorborder:"0",  
-	cursorborderradius:"5px"  
+  cursorcolor:"#888888",  
+  cursoropacitymax:1,  
+  touchbehavior:false,  
+  cursorwidth:"5px",  
+  cursorborder:"0",  
+  cursorborderradius:"5px"  
 });
-/*字数限制*/
+//表单验证提交
+$("#form-admin-add").Validform({    
+     tiptype:2,
+    callback:function(data){
+    //form[0].submit();
+    if(data.status==1){ 
+                layer.msg(data.info, {icon: data.status,time: 1000}, function(){ 
+                    location.reload();//刷新页面 
+                    });   
+            } 
+            else{ 
+                layer.msg(data.info, {icon: data.status,time: 3000}); 
+            }       
+      var index =parent.$("#iframe").attr("src");
+      parent.layer.close(index);
+      //
+    }       
+  }); 
+
+//字数限制
 function checkLength(which) {
-	var maxChars = 200; //
-	if(which.value.length > maxChars){
-	   layer.open({
-	   icon:2,
-	   title:'提示框',
-	   content:'您出入的字数超多限制!',	
+  var maxChars = 100; //
+  if(which.value.length > maxChars){
+     layer.open({
+     icon:2,
+     title:'提示框',
+     content:'您输入的字数超过限制!', 
     });
-		// 超过限制的字数了就将 文本框中的内容按规定的字数 截取
-		which.value = which.value.substring(0,maxChars);
-		return false;
-	}else{
-		var curr = maxChars - which.value.length; //200 减去 当前输入的
-		document.getElementById("sy").innerHTML = curr.toString();
-		return true;
-	}
-};
-/*按钮复选框选择*/
-$(function(){
-	$(".Competence_name dt input:checkbox").click(function(){
-		$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
-	});
-	$(".permission_list input:checkbox").click(function(){
-		var l =$(this).parent().parent().find("input:checked").length;
-		if($(this).prop("checked")){
-			$(this).closest("dl").find("dt input:checkbox").prop("checked",true);
-			$(this).parents(".Competence_name").find("dt").first().find("input:checkbox").prop("checked",true);
-		}
-		else{
-			if(l==0){
-				$(this).closest("dl").find("dt input:checkbox").prop("checked",false);
-			}			
-		}		
-	});
-});
+    // 超过限制的字数了就将 文本框中的内容按规定的字数 截取
+    which.value = which.value.substring(0,maxChars);
+    return false;
+  }else{
+    var curr = maxChars - which.value.length; //250 减去 当前输入的
+    document.getElementById("sy").innerHTML = curr.toString();
+    return true;
+  }
+};  
 </script>
