@@ -5,8 +5,9 @@ use app\admin\model\Users;
 use think\Db;  
 use think\Request;
 // use think\Paginator;
+use app\admin\controller\Base;
 
-class Member extends Controller
+class Member extends Base
 {
 	public function member_list()
     {
