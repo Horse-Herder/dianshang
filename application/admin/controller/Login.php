@@ -46,4 +46,13 @@ class Login extends Controller
             $this->error('登录失败');
         }
     }
+	
+	
+    public function login_del()
+    {
+        Session::delete('user','admin');
+        if(!Session::has('user','admin')){
+            $this->success('退出成功','admin/login/login');
+        }
+    }
 }
