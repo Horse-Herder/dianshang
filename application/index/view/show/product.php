@@ -442,7 +442,7 @@
                   </tr>
                   <tr height="50" valign="bottom">
                   	<td>&nbsp;</td>
-                    <td><a href="#" class="b_sure">确定</a></td>
+                    <td><a href="{:url('member/collectdo')}" class="b_sure">确定</a></td>
                   </tr>
                 </table>
                     
