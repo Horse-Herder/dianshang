@@ -27,6 +27,8 @@
 <body>
 <div class="margin" id="page_style">
 <div class="operation clearfix">
+ <span class="submenu"><a href="{:url('admin/guanggao/add')}" name="" class="btn button_btn bg-deep-blue" title="添加广告"><i class="fa  fa-edit"></i>&nbsp;添加广告</a></span>
+
 <!-- <button class="del" type="button" onclick="">&nbsp;删除</button> -->
 <!-- <i class="fa fa-trash-o"> --><input type="button" value="删除" style="margin-left:85px;" onclick="dels()"><!-- </i> -->
  反选<input type="checkbox" name="ddd" id="" onclick="bb()">
