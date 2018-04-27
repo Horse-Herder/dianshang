@@ -4,6 +4,7 @@ use think\Controller;
 use think\Request;//引入request
 use think\DB;
 use app\admin\model\guang;//引入模型层
+use app\admin\controller\Base;
 header("content-type:text/html;charset=UTF-8");//防乱码
 class Guanggao extends Base
 {
