@@ -112,9 +112,9 @@
       <li class="clearfix">
       <div class="col-xs-4">
      <label class="label_name col-xs-3">商品分类：&nbsp;&nbsp;</label> 
-        <select name="cat_id">
+        <select name="cate_id">
             <?php foreach($goods_type_data as $val):?>
-            <option value="{$val.cat_id}">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cat_name}</option>
+            <option value="{$val.cate_id}">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cate_name}</option>
              <?php endforeach;?>
 
           </select>  

@@ -1,6 +1,7 @@
 <?php
 use think\Session;
 use think\Cookie;
+use app\index\model\Category;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -19,6 +20,33 @@ function users($user_name)
     return $user_name = json_decode($user_name,true);
 }
 
+function category()
+{
+    $cate = Category::all();
+    return $cate;
+}
+
+
+function infinite()
+{
+    $cate = Category::all();
+    $list = TreeSon($cate);
+    return $list;
+}
+
+//无限极分类展示
+    function TreeSon($data,$parent_id=0,$level=0){  
+        $arr=array();  
+            foreach($data as $k=>$v){  
+                if($v['parent_id']==$parent_id){
+                    $flg = str_repeat('  ',$level);  
+                    $v['level']=$level;  
+                    $v['child']=TreeSon($data,$v['cate_id'],$level+1);  
+                    $arr[]=$v;  
+                }  
+            }      
+         return $arr;  
+    }
 /**
  * 系统邮件发送函数
  * @param string $tomail 接收邮件者邮箱

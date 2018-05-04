@@ -28,7 +28,7 @@ class Shop extends Base
         // echo $where;die;
          $data=Db::table('ecs_goods')
                 ->alias('a')
-                ->join('ecs_goods_type w','a.cat_id = w.cat_id')
+                ->join('ecs_category w','a.cate_id = w.cate_id')
                 ->where($where)
                 ->paginate(2,false,['query'=>request()->param()]);;
         // dump(Db::table('ecs_goods')->getLastSql());die;
@@ -129,7 +129,7 @@ class Shop extends Base
                 ->join('ecs_shuxing w','a.shuxing_id = w.shuxing_id')
                 ->select();
         $goods_brand=Db::table("ecs_brand")->select();
-        $goods_type=Db::table("ecs_goods_type")->select();
+        $goods_type=Db::table("ecs_category")->select();
         $goods_type_data=$this->digui($goods_type);
        // print_r($goods_type_data);die;
         $this->assign("goods_type_data",$goods_type_data);
@@ -146,11 +146,11 @@ class Shop extends Base
       {
         static $array=array();
         foreach ($date as $key => $value) {
-            if($value['attr_group']==$path)
+            if($value['parent_id']==$path)
             {
                 $value['f']=$flag;
                 $array[]=$value;
-                $this->digui($date,$value['cat_id'],$value['f']+1);
+                $this->digui($date,$value['cate_id'],$value['f']+1);
              }
         }
         return $array;
@@ -229,7 +229,7 @@ class Shop extends Base
                 ->join('ecs_shuxing w','a.shuxing_id = w.shuxing_id')
                 ->select();
         $goods_brand=Db::table("ecs_brand")->select();
-        $goods_type=Db::table("ecs_goods_type")->select();
+        $goods_type=Db::table("ecs_category")->select();
         $goods_type_data=$this->digui($goods_type);
        // print_r($goods_type_data);die;
         $this->assign("goods_type_data",$goods_type_data);

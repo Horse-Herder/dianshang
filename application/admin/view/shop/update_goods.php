@@ -113,12 +113,12 @@
       <li class="clearfix">
       <div class="col-xs-4">
      <label class="label_name col-xs-3">商品分类：&nbsp;&nbsp;</label> 
-        <select name="cat_id">
+        <select name="cate_id">
             <?php foreach($goods_type_data as $val):?>
-            <?php if($goods_data['cat_id']==$val['cat_id']){?>
-            <option value="{$val.cat_id}" selected="selected">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cat_name}</option>
+            <?php if($goods_data['cate_id']==$val['cate_id']){?>
+            <option value="{$val.cate_id}" selected="selected">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cate_name}</option>
             <?php }else{?>
-            <option value="{$val.cat_id}">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cat_name}</option>
+            <option value="{$val.cate_id}">{:str_repeat("&nbsp;",($val['f']-1)*4)}{$val.cate_name}</option>
             <?php }?>
              <?php endforeach;?>
 

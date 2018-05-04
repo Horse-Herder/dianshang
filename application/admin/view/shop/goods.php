@@ -70,7 +70,7 @@
    <th><?= $val['goods_name']?></th>
    <th width="100">浏览</th>
    <th width="120"><?= $val['shop_price']?></th>
-   <th width="100"><?= $val['cat_name']?></th>
+   <th width="100"><?= $val['cate_name']?></th>
    <th width="100"><?= $val['goods_number']?></th>
    <th width="150"><?= $val['add_time']?></th>
    <th width="100">

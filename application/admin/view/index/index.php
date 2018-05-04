@@ -80,7 +80,7 @@ $session = Session::get('user','admin');
        <ul>
          <li class="home"><a href="javascript:void(0)" name="{:url('admin/shop/goods')}" title="产品类表" class="iframeurl"><i class="fa fa-angle-double-right"></i>商品管理</a></li>
          <li class="home"><a href="javascript:void(0)" name="{:url('admin/shop/brand')}" title="品牌管理" class="iframeurl"><i class="fa fa-angle-double-right"></i>品牌管理</a></li>
-         <li class="home"><a href="javascript:void(0)" name="{:url('admin/shop/goods_type')}" title="分类管理" class="iframeurl"><i class="fa fa-angle-double-right"></i>分类管理</a></li>
+         <li class="home"><a href="javascript:void(0)" name="{:url('admin/cate/goods_type')}" title="分类管理" class="iframeurl"><i class="fa fa-angle-double-right"></i>分类管理</a></li>
          </ul>
          </dd>
   <dt class="nav_link"><a href="javascript:void(0)" class="dropdown-toggle title_nav"><i class="fa fa-database"></i><span class="menu-text"> 订单管理 </span><b class="arrow fa fa-angle-down"></b></a></dt>
