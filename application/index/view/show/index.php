@@ -43,9 +43,9 @@
     	<div class="banner">    	
             <div class="top_slide_wrap">
                 <ul class="slide_box bxslider">
-                    <li><img src="__PUBLIC__/static/index/images/ban1.jpg" width="740" height="401" /></li>
-                    <li><img src="__PUBLIC__/static/index/images/ban1.jpg" width="740" height="401" /></li> 
-                    <li><img src="__PUBLIC__/static/index/images/ban1.jpg" width="740" height="401" /></li> 
+                    {volist name="img" id="vo"}
+                    <li><img src="/uploads/{$vo.ad_file}" width="740" height="401" /></li>
+                    {/volist}
                 </ul>	
                 <div class="op_btns clearfix">
                     <a href="#" class="op_btn op_prev"><span></span></a>
@@ -115,256 +115,27 @@
                 <div id="block1">
                     <div id="botton-scroll1" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 1200px;">
                         <ul class="featureUL" style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 3600px; left: -2400px;">
+                            {volist name="goods" id="vo"}
                             <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
                                 <div class="box">
                                     <div class="h_icon"><img width="50" height="50" src="__PUBLIC__/static/index/images/hot.png">
                                     </div>
                                     <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot1.jpg"></a>
+                                        <a href="{:url('show/product',['goods_id'=>$vo.goods_id])}"><img width="160" height="136" src="{$vo.goods_img}"></a>
                                     </div>                                        
                                     <div class="name">
                                         <a href="javascript:void(0)">
-                                        <h2>德国进口</h2>
-                                        德亚全脂纯牛奶200ml*48盒
+                                        <h2>{$vo.goods_name}</h2>
+                                        {$vo.goods_brief}
                                         </a>
                                     </div>
                                     <div class="price">
-                                        <font>￥<span>189</span></font> &nbsp; 26R
+                                        <font>￥<span>{$goods_price}</span></font> &nbsp; 26R
                                     </div>
                                 </div>
                             </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="h_icon"><img width="50" height="50" src="__PUBLIC__/static/index/images/hot.png">
-                                    </div>                                
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot2.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>iphone 6S</h2>
-                                        Apple/苹果 iPhone 6s Plus公开版
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>5288</span></font> &nbsp; 25R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="h_icon"><img width="50" height="50" src="__PUBLIC__/static/index/images/hot.png">
-                                    </div>                                
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot3.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>倩碧特惠组合套装</h2>
-                                        倩碧补水组合套装8折促销
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>368</span></font> &nbsp; 18R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="h_icon"><img width="50" height="50" src="__PUBLIC__/static/index/images/hot.png">
-                                    </div>                                
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot4.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>品利特级橄榄油</h2>
-                                        750ml*4瓶装组合 西班牙原装进口
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>280</span></font> &nbsp; 30R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="h_icon"><img width="50" height="50" src="__PUBLIC__/static/index/images/hot.png">
-                                    </div>                                
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot4.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>品利特级橄榄油</h2>
-                                        750ml*4瓶装组合 西班牙原装进口
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>280</span></font> &nbsp; 30R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot1.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>德国进口</h2>
-                                        德亚全脂纯牛奶200ml*48盒
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>189</span></font> &nbsp; 26R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot2.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>iphone 6S</h2>
-                                        Apple/苹果 iPhone 6s Plus公开版
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>5288</span></font> &nbsp; 25R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot3.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>倩碧特惠组合套装</h2>
-                                        倩碧补水组合套装8折促销
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>368</span></font> &nbsp; 18R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot4.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>品利特级橄榄油</h2>
-                                        750ml*4瓶装组合 西班牙原装进口
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>280</span></font> &nbsp; 30R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot4.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>品利特级橄榄油</h2>
-                                        750ml*4瓶装组合 西班牙原装进口
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>280</span></font> &nbsp; 30R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot1.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>德国进口</h2>
-                                        德亚全脂纯牛奶200ml*48盒
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>189</span></font> &nbsp; 26R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot2.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>iphone 6S</h2>
-                                        Apple/苹果 iPhone 6s Plus公开版
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>5288</span></font> &nbsp; 25R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot3.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>倩碧特惠组合套装</h2>
-                                        倩碧补水组合套装8折促销
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>368</span></font> &nbsp; 18R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot4.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>品利特级橄榄油</h2>
-                                        750ml*4瓶装组合 西班牙原装进口
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>280</span></font> &nbsp; 30R
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="__PUBLIC__/static/index/images/hot4.jpg"></a>
-                                    </div>                                        
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                        <h2>品利特级橄榄油</h2>
-                                        750ml*4瓶装组合 西班牙原装进口
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>280</span></font> &nbsp; 30R
-                                    </div>
-                                </div>
-                            </li>
+                            {/volist}
+                              
                         </ul>
                     </div>
                 </div>

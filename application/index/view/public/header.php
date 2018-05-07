@@ -108,6 +108,7 @@
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="__PUBLIC__/static/index/images/s_tel.png" align="absmiddle" /></a></span>
+            <a href="{:url('index/login/qqlogin')}">QQ</a>
         </span>
     </div>
 </div>
@@ -200,7 +201,7 @@
     	<ul class="menu_r">
             <li><a href="{:url('Show/index')}">首页</a></li>
             {volist name="cate" id="vo"}           
-            <li><a href="{:url('category/list',['cate'=>$vo.cate_id])}">{$vo.cate_name}</a></li>
+            <li><a href="{:url('category/list',['cate_id'=>$vo.cate_id])}">{$vo.cate_name}</a></li>
             {/volist}
         </ul>
         <div class="m_ad">中秋送好礼！</div>

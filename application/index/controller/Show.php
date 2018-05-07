@@ -16,13 +16,19 @@ class Show extends Controller
         if(isset($user_name)){
             $this->assign('user_name',$user_name);
         }
+        // 查询热卖商品
+       $goods = Db('goods')->where('is_hot',1)->where('is_on_sale',1)->select();
+       $this->assign('goods',$goods);
+       $img = Db('ad_position')->select();
+
+       $this->assign('img',$img);
         return $this->fetch();
     }
 
     //详情页
     public function product()
     {
-        $goods_id=51;
+        $goods_id=Request::instance()->param('goods_id');
         $yanse=input('get.yanse');
         $chima=input('get.chima');
         if($yanse || $chima)
@@ -39,10 +45,11 @@ class Show extends Controller
 
         }else{
           $sku_one=Db::table('ecs_sku')->where('goods_id',$goods_id)->find();
+          // var_dump($sku_one);die;
         }
          if(!$sku_one)
          {
-            $this->success("你选中的商品类型已售空",'show/product');
+            $this->success("你选中的商品类型已售空",'show/index');die;
          }
          
         $sku_name=explode(',', $sku_one['sku']);

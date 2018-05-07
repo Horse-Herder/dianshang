@@ -5,10 +5,19 @@ use app\index\model\Users;
 use think\Db;
 use think\Session;
 use think\Cookie;
+use think\QQlogin;
 
 //添加自动加载支持
 class Login extends Controller
 {
+
+    public function qqlogin()
+    {
+        $obj_qqlogin = new QQlogin();
+        $url = $obj_qqlogin->getCode();
+        header("location:$url");
+    }
+
 	//前台登录
 	public function login()
 	{  

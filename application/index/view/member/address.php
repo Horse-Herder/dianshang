@@ -89,25 +89,25 @@
               </tr>
               <tr>
                 <td align="right">收货人姓名</td>
-                <td style="font-family:'宋体';"><input type="text" name="consignee" value="姓名" class="add_ipt" />（必填）</td>
+                <td style="font-family:'宋体';"><input type="text" name="consignee" value="{$address.consignee}" class="add_ipt" />（必填）</td>
                 <td align="right">电子邮箱</td>
-                <td style="font-family:'宋体';"><input type="text" name="email" value="12345678@qq.com" class="add_ipt" />（必填）</td>
+                <td style="font-family:'宋体';"><input type="text" name="email" value="{$address.email}" class="add_ipt" />（必填）</td>
               </tr>
               <tr>
                 <td align="right">详细地址</td>
-                <td style="font-family:'宋体';"><input type="text" name="address" value="世外桃源" class="add_ipt" />（必填）</td>
+                <td style="font-family:'宋体';"><input type="text" name="address" value="{$address.address}" class="add_ipt" />（必填）</td>
                 <td align="right">邮政编码</td>
                 <td style="font-family:'宋体';"><input type="text" name="zipcode" value="610000" class="add_ipt" /></td>
               </tr>
               <tr>
                 <td align="right">手机</td>
-                <td style="font-family:'宋体';"><input type="text" name="mobile" value="1361234587" class="add_ipt" />（必填）</td>
+                <td style="font-family:'宋体';"><input type="text" name="mobile" value="{$address.mobile}" class="add_ipt" />（必填）</td>
                 <td align="right">电话</td>
-                <td style="font-family:'宋体';"><input type="text" name="tel" value="028-12345678" class="add_ipt" /></td>
+                <td style="font-family:'宋体';"><input type="text" name="tel" value="{$address.tel}" class="add_ipt" /></td>
               </tr>
               <tr>
                 <td align="right">标志建筑</td>
-                <td style="font-family:'宋体';"><input type="text" name="sign_building" value="世外桃源大酒店" class="add_ipt" /></td>
+                <td style="font-family:'宋体';"><input type="text" name="sign_building" value="{$address.sign_building}" class="add_ipt" /></td>
                 <td align="right">最佳送货时间</td>
                 <td style="font-family:'宋体';"><input type="text" name="best_time" value="" class="add_ipt" /></td>
               </tr>

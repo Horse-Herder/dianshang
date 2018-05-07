@@ -10,7 +10,6 @@ class Buycar extends Controller
 	//购物车信息
     public function index()
     {
-
         $user_id=users('user_name')['user_id'];
         $cart_data=Db::name('cart')
                   ->alias('a')
@@ -69,7 +68,7 @@ class Buycar extends Controller
          Db::name('order_info')->insert($data);
          $goodsId = Db::name('order_info')->getLastInsID();
          echo $goodsId;die;
-        print_r($data);die;
+        rint_r($data);die;
      }
     //成功提交订单
      public function three()

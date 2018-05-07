@@ -2,6 +2,7 @@
 use think\Session;
 use think\Cookie;
 use app\index\model\Category;
+use think\Db;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -22,7 +23,7 @@ function users($user_name)
 
 function category()
 {
-    $cate = Category::all();
+    $cate = Db('category')->where('is_show',0)->limit(6)->select();
     return $cate;
 }
 

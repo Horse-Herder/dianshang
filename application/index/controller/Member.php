@@ -64,8 +64,8 @@ class Member extends Controller
                     'tel' => trim(input('tel')),
                     'sign_building' => trim(input('sign_building')),
                     'best_time' => trim(input('best_time')),
-                ];
-        $arr = \think\Db::table('ecs_user_address')->insert($data);
+                ];;
+        $arr = \think\Db::table('ecs_user_address')->where('user_id',$user_id)->setField($data);
         return $this->success('修改成功','member/address');
     }
 
