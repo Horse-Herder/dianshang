@@ -174,18 +174,21 @@
                     <li>
                     	<div class="fj">
                         	<span class="n_img"><span></span><img src="__PUBLIC__/static/index/images/nav1.png" /></span>
-                            <span class="fl">{$vo.cate_name}</span>
+                            <span class="fl"><a href="{:url('category/list',['cate_id'=>$vo.cate_id])}">{$vo.cate_name}</a></span>
                         </div>
                         <div class="zj">
                             <div class="zj_l">
                                 {volist name="$vo.child" id="v"}
                                 <div class="zj_l_c">
-                                    <h2>{$v.cate_name}</h2>
+                                    <h2><a href="{:url('category/list',['cate_id'=>$v.cate_id])}">{$v.cate_name}</a></h2>
                                     {volist name="$v.child" id="vv"}
-                                        <a href="{:url('category/list',['cate_id'=>$vo.cate_id])}">{$vv.cate_name}</a>
+                                        <a href="{:url('category/list',['cate_id'=>$vv.cate_id])}">{$vv.cate_name}</a>
                                 {/volist}    
                                 </div>
                                 {/volist}
+                            </div>
+                    </li>     
+                    {/volist} 
                             </div>
                     </li>     
                     {/volist}               	
