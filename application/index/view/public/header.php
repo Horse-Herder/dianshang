@@ -188,10 +188,7 @@
                                 {/volist}
                             </div>
                     </li>     
-                    {/volist} 
-                            </div>
-                    </li>     
-                    {/volist}               	
+                    {/volist}           	
                 </ul>            
             </div>
         </div>  
