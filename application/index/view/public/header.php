@@ -182,7 +182,7 @@
                                 <div class="zj_l_c">
                                     <h2>{$v.cate_name}</h2>
                                     {volist name="$v.child" id="vv"}
-                                        <a href="{$vv.cate_id}">{$vv.cate_name}</a>
+                                        <a href="{:url('category/list',['cate_id'=>$vo.cate_id])}">{$vv.cate_name}</a>
                                 {/volist}    
                                 </div>
                                 {/volist}
